@@ -1,10 +1,10 @@
 class Employee:
     def __init__(self):
         self.employeeID = 0
-        self.title = ''
-        self.forename = ''
-        self.surname = ''
-        self.email = ''
+        self.title = 'a'
+        self.forename = 'b'
+        self.surname = 'c'
+        self.email = 'd'
         self.salary = 0.0
 
     def set_employee_id(self, id):
