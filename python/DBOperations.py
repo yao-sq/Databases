@@ -130,6 +130,30 @@ class DBOperations:
         # and fill in null for the deleted cell?
         # maybe in another function?
 
+    def update_data(self):
+        self.conn = self.get_connection()
+        console_input = input("Enter Employee ID to update: \n")
+        try:
+            update_id = int(console_input)
+        except:
+            print("Wrong type, ID should be int")
+            return False
+
+        ### update cell FIXME: if the id is set to be a string, it can't be changed back
+        update_col = str(input("Enter the column name: \n"))
+        update_content = str(input("Enter the content to be updated: \n"))
+        query = "UPDATE info SET {} = '{}' WHERE id= '{}'".format(update_col, update_content, update_id)
+        print(query)
+        if self.search_data(update_id):
+            self.conn.execute(query)
+            self.conn.commit()
+
+
+        ###  alter table: add column
+        ###  alter table: drop column
+        ###  alter table: alter/modify column
+
+
 
 if __name__ == '__main__':
     db_ops = DBOperations()
@@ -137,9 +161,9 @@ if __name__ == '__main__':
     # db_ops.create_table()
     # db_ops.insert_data()
     # db_ops.search_data()
-    db_ops.delete_data()
-    db_ops.report_data()
-
+    # db_ops.delete_data()
+    db_ops.update_data()
+    # db_ops.report_data()
 
     # while True:
     #     print("\n Menu:")
