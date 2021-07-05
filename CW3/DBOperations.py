@@ -1,6 +1,6 @@
 import sqlite3
 from CW3.Employee import Employee
-from CW3.EmployeeRepository import EmployeeRepository
+from CW3.EmployeeRepository import EmployeeRepository, EmployeeEntity
 
 
 class DBOperations:
@@ -41,7 +41,7 @@ class DBOperations:
             emp.set_title(str(input("Enter Title: ")))
             emp.set_forename(str(input("Enter Forename: ")))
             emp.set_surname(str(input("Enter Surname: ")))
-            emp.set_email(str(input("Enter Email: ")))
+            emp.set_email_address(str(input("Enter Email: ")))
             emp.set_salary(str(input("Enter Salary: ")))
 
             print(tuple(str(emp).split("\n")))
@@ -168,16 +168,25 @@ if __name__ == '__main__':
     conn = db_ops.get_connection()
     repo = EmployeeRepository(conn)
 
-    employee = repo.find_by_id(127)
-    if employee:
-        print(employee)
-        employee.set_title(input("New title: "))
-    else:
-        print("No result with this id")
+    # employee = repo.find_by_id(127)
+    # if employee:
+    #     print(employee)
+    #     employee.set_title(input("New title: "))
+    # else:
+    #     print("No result with this id")
+    #
+    # print("---By name---")
+    # print([str(s) for s in repo.find_by_name("Yao")])
 
-    print("---By name---")
+    # emp = Employee(3, 'Dr', 'Sleep', 'Moore', 'mm', 500)
+    # repo.insert(emp)
 
-    print([str(s) for s in repo.find_by_name("Yao")])
+    # repo.delete(500)
+
+    emp = repo.find_by_id(3)
+    emp.set_employee_id(100)
+
+    db_ops.report_data()
 
 
     # while True:

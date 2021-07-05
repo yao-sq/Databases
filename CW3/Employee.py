@@ -19,7 +19,7 @@ class Employee:
     def set_surname(self, surname):
         self.surname = surname
 
-    def set_email(self, email):
+    def set_email_address(self, email):
         self.email = email
 
     def set_salary(self, salary):
@@ -37,7 +37,7 @@ class Employee:
     def get_surname(self):
         return self.surname
 
-    def get_email(self):
+    def get_email_address(self):
         return self.email
 
     def get_salary(self):
